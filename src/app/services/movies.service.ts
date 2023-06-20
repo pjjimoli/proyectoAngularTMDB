@@ -22,7 +22,7 @@ export class MoviesService {
 
   getSearchMovie (id: any): Observable<Movies> {
     console.log(id, 'movie#');
-    return this.http.get<Movies>(`${this.baseURL}/search/movie?api_key=${this.apikey}&query=${id.movieName}`);
+    return this.http.get<Movies>(`${this.baseURL}/search/movie?api_key=${this.apikey}&query=${id.movieName}&language=es-ES`);
   }
 
   getMovieDetails (id: any): Observable<Movies> {

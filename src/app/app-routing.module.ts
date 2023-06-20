@@ -6,14 +6,14 @@ import { MovieDetailsComponent } from './pages/movie-details/movie-details.compo
 const routes: Routes = [
   {
     path: 'search',
-    component: SearchComponent,
-
+    component: SearchComponent
   },
   {
     path: 'movie/:id',
-    component: MovieDetailsComponent,
-
-  }
+    component: MovieDetailsComponent
+  },
+  { path: '', pathMatch: 'full', redirectTo: '/search' },
+  { path: '**', pathMatch: 'full', redirectTo: '/search' }
 ];
 
 @NgModule({
