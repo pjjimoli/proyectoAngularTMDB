@@ -11,19 +11,23 @@ import { MoviesService } from 'src/app/services/movies.service';
 export class MovieDetailsComponent implements OnInit {
 
   getMovieDetailResult?: any;
+  getMovieVideoResult?: any;
+  getMovieCastResult?: any;
 
   constructor (private moviesService: MoviesService, private router: ActivatedRoute, private title: Title, private meta: Meta) { }
 
   ngOnInit (): void {
-    this.getMovie();
-    
+    let getParamId = this.router.snapshot.paramMap.get('id');
+    console.log(getParamId, 'getparamid#');
+
+    this.getMovie(getParamId);
+
   }
 
-  getMovie () {
-    this.moviesService.getMovieDetails(this.router.snapshot.paramMap.get('id')).subscribe(async (result) => {
+  getMovie (id: any) {
+    this.moviesService.getMovieDetails(id).subscribe(async (result) => {
       console.log(result, 'getmoviedetails#');
-      this.getMovieDetailResult = result;
-
+      this.getMovieDetailResult = await result;
     });
   }
 
